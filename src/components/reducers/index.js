@@ -7,7 +7,7 @@ import {
   ADD_SUGGESTIONS,
   ADD_PRICE,
   DELETE_ITEM,
-  TYPE_FILTER
+  TYPE_FILTER,
 } from "../actions";
 
 const initialTshirtsState = {
@@ -18,8 +18,8 @@ const initialTshirtsState = {
   total: 0,
   suggesstions: [],
   clickColor: "",
-  clickType : "",
-  clickPrice : "",
+  clickType: "",
+  clickPrice: "",
 };
 
 export default function tshirts(state = initialTshirtsState, action) {
@@ -50,29 +50,28 @@ export default function tshirts(state = initialTshirtsState, action) {
       };
     }
 
-    case DELETE_ITEM :{
-      let newTotal =0;
-      let arrayAfterDelete =[]
-     state.cartList.forEach((element)=>{
-       
+    case DELETE_ITEM: {
+      let newTotal = 0;
+      let arrayAfterDelete = [];
+      state.cartList.forEach((element) => {
         console.log(action.item.id);
-       if(element.id != action.item.id){
-         arrayAfterDelete.push(element)
-       }
-      })
+        if (element.id != action.item.id) {
+          arrayAfterDelete.push(element);
+        }
+      });
       console.log("New Delete array reducer", arrayAfterDelete);
 
-      arrayAfterDelete.forEach((element)=>{
-        newTotal = newTotal +  element.price * element.seletedquant
-      })
+      arrayAfterDelete.forEach((element) => {
+        newTotal = newTotal + element.price * element.seletedquant;
+      });
 
       console.log("New Total", newTotal);
 
-      return{
+      return {
         ...state,
-        cartList : arrayAfterDelete,
-        total : newTotal
-      }
+        cartList: arrayAfterDelete,
+        total: newTotal,
+      };
     }
 
     case COLOR_FILTER: {
@@ -98,50 +97,39 @@ export default function tshirts(state = initialTshirtsState, action) {
     }
 
     case ADD_PRICE: {
-      console.log("action array", action.array );
-      if(action.array === null){
-        return{
+      console.log("action array", action.array);
+      if (action.array === null) {
+        return {
           ...state,
-          listshow : state.listog,
-          clickPrice : true,
-        }
-      }
-      else{
-        return{
+          listshow: state.listog,
+          clickPrice: true,
+        };
+      } else {
+        return {
           ...state,
-          listshow : action.array,
-          clickPrice : false,
-        }
-
+          listshow: action.array,
+          clickPrice: false,
+        };
       }
-
-      
     }
 
-    case TYPE_FILTER : {
-      if(action.array === null){
-        return{
+    case TYPE_FILTER: {
+      if (action.array === null) {
+        return {
           ...state,
-          listshow : state.listog,
-          clickType : true,
-        }
-      }
-      else{
-        return{
+          listshow: state.listog,
+          clickType: true,
+        };
+      } else {
+        return {
           ...state,
-          listshow : action.array,
-          clickType : false,
-        }
-
+          listshow: action.array,
+          clickType: false,
+        };
       }
-
-     
-
     }
 
     case CAL_TOTAL: {
-      
-
       if (action.sum.num <= 0) {
         return {
           ...state,
@@ -150,7 +138,7 @@ export default function tshirts(state = initialTshirtsState, action) {
       } else {
         return {
           ...state,
-          total: state.total + action.sum.price ,
+          total: state.total + action.sum.price,
         };
       }
     }

@@ -69,8 +69,6 @@ export function addTshirtsToList(tshirts) {
 
 // action creator for adding tshirt to cart list
 export function addToCart(tshirt) {
-  // console.log("Adding to cart" , tshirt);
-
   return {
     type: ADD_TO_CART,
     tshirt,

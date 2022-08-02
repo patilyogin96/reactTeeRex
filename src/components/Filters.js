@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import { addFilter, addPriceFilter, addTypeFilter } from "./actions";
 
 export class Filters extends Component {
+
+  // close the filter
+  closeFilter = () =>{
+    document.querySelector(".filters").classList.remove("toShowFilters");
+  } 
   // to filter according to type
   onTypeFilter = (e) => {
     const { clickType } = this.props.store.getState();
@@ -75,7 +80,9 @@ export class Filters extends Component {
   render() {
     return (
       <>
+      
         <div className="filters">
+          <div className="close-btn"><i class="fa-solid fa-xmark" onClick={this.closeFilter}></i></div>
           <div className="filter">
             <h2>Color</h2>
 

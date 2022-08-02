@@ -10,6 +10,11 @@ export class Navbar extends Component {
     };
   }
 
+  showFilters=()=>{
+    document.querySelector(".filters").classList.add("toShowFilters");
+  }
+
+  // set state of searchText and send disptach to fire auto suggestions
   handleChange = (e) => {
     const { searchText } = this.state;
 
@@ -18,13 +23,13 @@ export class Navbar extends Component {
     });
 
     this.props.store.dispatch(handleSuggestion());
-
-    // console.log("Handle change");
   };
 
   handleSearchResults = (val) => {
+    // to hide the search list from screen
     document.querySelector(".auto-sug").classList.add("toHide");
-    console.log("inside search", val);
+
+    // function to search ther selected thsirts
     const { searchText } = this.state;
     if (val) {
       this.props.store.dispatch(handleTshirtSearch(val));
@@ -35,10 +40,9 @@ export class Navbar extends Component {
     } else {
       this.props.store.dispatch(handleTshirtSearch(searchText));
     }
-
-    // console.log("Handle Search Results");
   };
 
+  // function to toggle between product and cart page
   onChangeTab = (val) => {
     this.props.store.dispatch(showCart(val));
   };
@@ -60,10 +64,6 @@ export class Navbar extends Component {
 
     const { auto } = this.props;
 
-    // var suggest = ["Black", "Blue", "Red", "Red H"];
-
-    // console.log("Auto in nav bar",auto);
-
     return (
       <>
         {/* navbar */}
@@ -78,7 +78,9 @@ export class Navbar extends Component {
               <span>
                 <i className="fa-solid fa-cart-shopping"></i>
               </span>
-              <span className="qty"><p>{this.getCount()}</p></span>
+              <span className="qty">
+                <p>{this.getCount()}</p>
+              </span>
             </div>
           </div>
         </div>
@@ -96,6 +98,7 @@ export class Navbar extends Component {
             <button className="btn-style" onClick={this.handleSearchResults}>
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
+            {/*below block  will fire autosuggestios while searching*/}
             <div className="auto-sug">
               {auto
                 .filter((val) => {
@@ -117,10 +120,12 @@ export class Navbar extends Component {
                 })}
             </div>
           </span>
-          <span><i className="fa-solid fa-filter"></i></span>
+          <span>
+            <i className="fa-solid fa-filter" onClick={this.showFilters}></i>
+          </span>
         </div>
 
-        {/* main display bar */}
+      
       </>
     );
   }

@@ -5,24 +5,17 @@ import TshirtsCard from "./TshirtsCard";
 
 export class MainDisplay extends Component {
   render() {
+    const { store } = this.props;
 
-    const {store} = this.props;
-    // console.log("check props", store);
     const { list } = this.props;
 
-    // console.log("list in card", list);
     return (
       <>
-     
         <div className="main-display">
-        <Filters store={store} list={list}/>
-        
+          {/* wrap all filters and Tshirts to be shown in one screen*/}
+          <Filters store={store} list={list} />
 
-        
           <TshirtsCard list={list} store={store} />
-    
-        
-          
         </div>
       </>
     );
