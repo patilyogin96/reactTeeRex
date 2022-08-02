@@ -15,6 +15,8 @@ export const ADD_PRICE = "ADD_PRICE"
 
 export const DELETE_ITEM = "DELETE_ITEM"
 
+export const TYPE_FILTER = "TYPE_FILTER"
+
 // action creaters
 
 export function handleTshirtSearch(tshirtsSearched) {
@@ -84,7 +86,7 @@ export function showCart(val) {
 }
 
 // action creater to add filter
-
+// filter the list according to color
 export function addFilter(val , ifcheck) {
   // console.log(val);
 
@@ -97,7 +99,6 @@ export function addFilter(val , ifcheck) {
 }
 
 // action to calculate total
-
 export function calTot(p, q) {
   return {
     type: CAL_TOTAL,
@@ -144,16 +145,26 @@ export function addSuggesstions(suggest){
 }
 
 // price filter
-
-export function addPriceFilter(array){
+export function addPriceFilter(array , isPresent){
   return{
     type : ADD_PRICE,
     array,
+    isPresent,
   }
 }
 
-// delete from cart
+// tshirts type filter
+export function addTypeFilter(array , ifPresent){
+  return{
+    type : TYPE_FILTER,
+    array,
+    ifPresent,
 
+  }
+
+}
+
+// delete from cart
 export function deleteFromCart(item){
   return{
     type : DELETE_ITEM,

@@ -70,6 +70,16 @@
   position: relative;
     top: 0%;
     left: 6%;
+    cursor: pointer;
+}
+
+.shopcart :hover{
+  border: 1px solid yellow;
+  width: 40px;
+  border-radius: 4px;
+  background-color: yellow;
+  color: black;
+
 }
 
 .big-div{
@@ -81,12 +91,23 @@
  height: 38px;
 }
 
+
+
 #nav-products{
  
   position: relative;
   left: -4%;
   color: white;
   font-size: 22px;
+  cursor: pointer;
+}
+
+#nav-products:hover{
+  border: 1px solid yellow;
+  width: 100px;
+  border-radius: 4px;
+  background-color: yellow;
+  color: black;
 }
 
 .qty{
@@ -187,9 +208,19 @@
 }
 
 .filter{
-  display: flex;
-  flex-direction: column;
+  width: 150px;
+  height: auto;
+  /* border: 2px solid black; */
+  margin-left: 30px;
+  padding: 10px;
+  text-align: left;
 }
+
+.filter>h2{
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+
 
 .card-display{
   width: 65%;
@@ -295,4 +326,41 @@
 .cart-img>img{
   width: 120px;
   height: 113px;
+}
+
+.item-qty>input{
+  width: 20px;
+    text-align: center;
+}
+
+.item-name{
+  margin-top: -12px;
+}
+.item-name>h4{
+  margin-bottom: 5px;
+}
+.item-name>span{
+  font-size: 15px;
+}
+
+/* making cart section responsive */
+@media(max-width : 700px){
+
+  .cart-section{
+    align-items: center;
+    margin-left: 0px;
+  }
+  .cart-item{
+    flex-direction: column;
+    height: 265px;
+    width: 350px;
+    padding: 10px;
+    position: relative;
+    left: 37%;
+  }
+
+  .big-div{
+    margin-right: 25px;
+  }
+
 }

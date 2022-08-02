@@ -6,7 +6,8 @@ import {
   CAL_TOTAL,
   ADD_SUGGESTIONS,
   ADD_PRICE,
-  DELETE_ITEM
+  DELETE_ITEM,
+  TYPE_FILTER
 } from "../actions";
 
 const initialTshirtsState = {
@@ -17,6 +18,8 @@ const initialTshirtsState = {
   total: 0,
   suggesstions: [],
   clickColor: "",
+  clickType : "",
+  clickPrice : "",
 };
 
 export default function tshirts(state = initialTshirtsState, action) {
@@ -96,10 +99,44 @@ export default function tshirts(state = initialTshirtsState, action) {
 
     case ADD_PRICE: {
       console.log("action array", action.array );
-      return{
-        ...state,
-        listshow :action.array
+      if(action.array === null){
+        return{
+          ...state,
+          listshow : state.listog,
+          clickPrice : true,
+        }
       }
+      else{
+        return{
+          ...state,
+          listshow : action.array,
+          clickPrice : false,
+        }
+
+      }
+
+      
+    }
+
+    case TYPE_FILTER : {
+      if(action.array === null){
+        return{
+          ...state,
+          listshow : state.listog,
+          clickType : true,
+        }
+      }
+      else{
+        return{
+          ...state,
+          listshow : action.array,
+          clickType : false,
+        }
+
+      }
+
+     
+
     }
 
     case CAL_TOTAL: {
