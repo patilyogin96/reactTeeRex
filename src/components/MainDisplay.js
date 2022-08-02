@@ -15,7 +15,7 @@ export class MainDisplay extends Component {
       <>
      
         <div className="main-display">
-        <Filters store={store}/>
+        <Filters store={store} list={list}/>
         
 
         

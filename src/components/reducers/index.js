@@ -1,10 +1,22 @@
-import { ADD_TSHIRT_TO_LIST , ADD_TO_CART , SHOW_CART , COLOR_FILTER } from "../actions";
+import {
+  ADD_TSHIRT_TO_LIST,
+  ADD_TO_CART,
+  SHOW_CART,
+  COLOR_FILTER,
+  CAL_TOTAL,
+  ADD_SUGGESTIONS,
+  ADD_PRICE,
+  DELETE_ITEM
+} from "../actions";
 
 const initialTshirtsState = {
   listog: [],
-  cartList:[],
-  showCart : true,
-  listshow :[],
+  cartList: [],
+  showCart: true,
+  listshow: [],
+  total: 0,
+  suggesstions: [],
+  clickColor: "",
 };
 
 export default function tshirts(state = initialTshirtsState, action) {
@@ -16,55 +28,105 @@ export default function tshirts(state = initialTshirtsState, action) {
       // console.log("Entered here");
       return {
         ...state,
-        listog : [action.tshirts, ...state.listog],
-        listshow : [action.tshirts, ...state.listog],
+        listog: [action.tshirts, ...state.listog],
+        listshow: [action.tshirts, ...state.listog],
       };
     }
 
-    case ADD_TO_CART : {
-
+    case ADD_TO_CART: {
       return {
         ...state,
-        cartList : [action.tshirt,...state.cartList]
+        cartList: [action.tshirt, ...state.cartList],
+      };
+    }
+
+    case SHOW_CART: {
+      return {
+        ...state,
+        showCart: action.val,
+      };
+    }
+
+    case DELETE_ITEM :{
+      let newTotal =0;
+      let arrayAfterDelete =[]
+     state.cartList.forEach((element)=>{
+       
+        console.log(action.item.id);
+       if(element.id != action.item.id){
+         arrayAfterDelete.push(element)
+       }
+      })
+      console.log("New Delete array reducer", arrayAfterDelete);
+
+      arrayAfterDelete.forEach((element)=>{
+        newTotal = newTotal +  element.price * element.seletedquant
+      })
+
+      console.log("New Total", newTotal);
+
+      return{
+        ...state,
+        cartList : arrayAfterDelete,
+        total : newTotal
       }
     }
 
-    case SHOW_CART : {
-      return {
-        ...state,
-        showCart : action.val
-      }
-    }
-
-    case COLOR_FILTER : {
-
-      if(action.val === null){
-
-        return{
+    case COLOR_FILTER: {
+      let filterList = [];
+      if (action.val === null) {
+        return {
           ...state,
-          listshow : state.listog
-        }
-
-      }
-      else{
-
-        const filterList = state.listog.filter((elem)=>{
-
+          listshow: state.listog,
+          clickColor: true,
+        };
+      } else {
+        filterList = state.listog.filter((elem) => {
           // console.log("element", elem);
           return elem.color === action.val;
-    
-        })
-  
-        return{
-  
+        });
+
+        return {
           ...state,
-          listshow : filterList
-        }
-
+          listshow: filterList,
+          clickColor: false,
+        };
       }
-
-     
     }
+
+    case ADD_PRICE: {
+      console.log("action array", action.array );
+      return{
+        ...state,
+        listshow :action.array
+      }
+    }
+
+    case CAL_TOTAL: {
+      
+
+      if (action.sum.num <= 0) {
+        return {
+          ...state,
+          total: state.total + action.sum.price,
+        };
+      } else {
+        return {
+          ...state,
+          total: state.total + action.sum.price ,
+        };
+      }
+    }
+
+    case ADD_SUGGESTIONS: {
+      // console.log("action.suggest", action.suggest);
+
+      return {
+        ...state,
+        suggesstions: [action.suggest, ...state.suggesstions],
+      };
+    }
+
     default:
       return state;
   }

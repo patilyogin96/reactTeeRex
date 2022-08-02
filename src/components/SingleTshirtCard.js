@@ -6,9 +6,18 @@ export class SingleTshirtCard extends Component {
 
   handleAddToCart = ()=>{
     const{tshirt} = this.props;
+
+    if(tshirt.quantity == 0){
+      alert("Selected item not available in stock")
+      return;
+    }
+    else{
+      this.props.store.dispatch(addToCart(tshirt))
+
+    }
    
 
-    this.props.store.dispatch(addToCart(tshirt))
+    
 
 
 

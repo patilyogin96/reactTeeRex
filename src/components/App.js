@@ -1,11 +1,8 @@
-
 import React, { Component } from "react";
 import "./App.css";
 
 import Cart from "./Cart";
 import Products from "./Products";
-
-
 
 export class App extends Component {
   componentDidMount() {
@@ -20,24 +17,20 @@ export class App extends Component {
   }
 
   render() {
-    const { listshow, cartList, showCart } = this.props.store.getState();
+    const { listshow, cartList, showCart, total, suggesstions } =
+      this.props.store.getState();
 
-    // console.log("list", list);
-    console.log("New filter list", listshow);
-
+    const filteredSuggest = [...new Set(suggesstions)];
 
     const { store } = this.props;
 
-    // console.log(store);
     return (
       <div className="App">
-       
-           
-            {showCart ? <Products store={store}/>  : <Cart store={store} cartList={cartList}/> }
-          
-
-            
-            
+        {showCart ? (
+          <Products store={store} auto={filteredSuggest} />
+        ) : (
+          <Cart store={store} cartList={cartList} total={total} />
+        )}
       </div>
     );
   }

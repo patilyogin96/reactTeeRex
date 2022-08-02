@@ -5,13 +5,14 @@ import MainDisplay from './MainDisplay'
 export class Products extends Component {
   render() {
 
-    const { listshow, cartList, showCart } = this.props.store.getState();
+    const { listshow, cartList, showCart ,  } = this.props.store.getState();
     const { store } = this.props;
+    const {auto} = this.props
 
    
     return (
       <>
-      <Navbar store={store}/>
+      <Navbar store={store} auto={auto} cartList={cartList}/>
       <MainDisplay list={listshow} store={store}/>
       
       </>
