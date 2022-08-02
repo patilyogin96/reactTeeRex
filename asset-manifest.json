@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/reactTeeRex/static/css/main.84f89821.css",
+    "main.js": "/reactTeeRex/static/js/main.6023afaa.js",
+    "index.html": "/reactTeeRex/index.html",
+    "main.84f89821.css.map": "/reactTeeRex/static/css/main.84f89821.css.map",
+    "main.6023afaa.js.map": "/reactTeeRex/static/js/main.6023afaa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.84f89821.css",
+    "static/js/main.6023afaa.js"
+  ]
+}
