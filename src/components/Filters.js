@@ -60,22 +60,32 @@ export class Filters extends Component {
 
   // this function will filter tshirts according to color
   onChangeFilter = (val) => {
-    //  iff clickcolor false
+    //  iff clickcolor falseconst { clickType } = this.props.store.getState();
 
     const { clickColor } = this.props.store.getState();
 
-    console.log("coutn", clickColor);
+    const { list } = this.props;
+    // array to store on selected type tshirts
+    let filteredArray = [];
+
+    list.forEach((element) => {
+      if (element.color == val.target.value) {
+        filteredArray.push(element);
+      }
+    });
+    console.log("type array", filteredArray);
 
     if (clickColor === "") {
-      console.log("executed here");
-
-      this.props.store.dispatch(addFilter(val.target.value, true));
+      this.props.store.dispatch(addFilter(filteredArray, true));
     } else if (clickColor == false) {
-      console.log("execured with not value");
-      this.props.store.dispatch(addFilter(null, false));
+      this.props.store.dispatch(addFilter(null, false)); //to send null if input box is unchecked so that previous results are displayed
     } else if (clickColor == true) {
-      this.props.store.dispatch(addFilter(val.target.value, true));
+      this.props.store.dispatch(addFilter(filteredArray, true)); //to send filterd array if input box checked
     }
+
+    
+
+   
   };
   render() {
     return (

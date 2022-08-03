@@ -85,13 +85,13 @@ export function showCart(val) {
 
 // action creater to add filter
 // filter the list according to color
-export function addFilter(val , ifcheck) {
+export function addFilter(array , ifcheck) {
   // console.log(val);
 
   return {
     type: COLOR_FILTER,
     ifcheck,
-    val,
+    array,
 
   };
 }

@@ -28,7 +28,7 @@ export default function tshirts(state = initialTshirtsState, action) {
 
   switch (action.type) {
     case ADD_TSHIRT_TO_LIST: {
-      
+
       // console.log("Entered here");
       return {
         ...state,
@@ -76,22 +76,18 @@ export default function tshirts(state = initialTshirtsState, action) {
     }
 
     case COLOR_FILTER: {
-      let filterList = [];
-      if (action.val === null) {
+    
+      if (action.array === null) {
         return {
           ...state,
           listshow: state.listog,
           clickColor: true,
         };
       } else {
-        filterList = state.listog.filter((elem) => {
-          // console.log("element", elem);
-          return elem.color === action.val;
-        });
-
+      
         return {
           ...state,
-          listshow: filterList,
+          listshow: action.array,
           clickColor: false,
         };
       }
