@@ -94,6 +94,7 @@ export class Navbar extends Component {
               name=""
               id="search-box"
               onChange={this.handleChange}
+              placeholder="Type Black/Blue/Polo/Hoodie"
             />
             <button className="btn-style" onClick={this.handleSearchResults}>
               <i className="fa-solid fa-magnifying-glass"></i>
