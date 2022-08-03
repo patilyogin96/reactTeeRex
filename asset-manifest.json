@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/reactTeeRex/static/css/main.84f89821.css",
-    "main.js": "/reactTeeRex/static/js/main.6023afaa.js",
+    "main.css": "/reactTeeRex/static/css/main.73f75ade.css",
+    "main.js": "/reactTeeRex/static/js/main.4cd8b8f3.js",
     "index.html": "/reactTeeRex/index.html",
-    "main.84f89821.css.map": "/reactTeeRex/static/css/main.84f89821.css.map",
-    "main.6023afaa.js.map": "/reactTeeRex/static/js/main.6023afaa.js.map"
+    "main.73f75ade.css.map": "/reactTeeRex/static/css/main.73f75ade.css.map",
+    "main.4cd8b8f3.js.map": "/reactTeeRex/static/js/main.4cd8b8f3.js.map"
   },
   "entrypoints": [
-    "static/css/main.84f89821.css",
-    "static/js/main.6023afaa.js"
+    "static/css/main.73f75ade.css",
+    "static/js/main.4cd8b8f3.js"
   ]
 }
